@@ -1,7 +1,7 @@
 version: '2'
 services:
   aqua-web:
-    image: aquasec/server:2.5.2
+    image: aquasec/server:2.5.3
     links:
       - aqua-db
     volumes:
@@ -49,7 +49,7 @@ services:
     hostname: aqua-web
     restart: always
   aqua-gateway:
-    image: aquasec/gateway:2.5.2
+    image: aquasec/gateway:2.5.3
     ### Gateway can connect to a local database or remote
     ### By default it will connect to database on '127.0.0.1'
     ### Remove the below comment to change the 127.0.0.1 to a linked database container
@@ -87,7 +87,7 @@ services:
     container_name: aqua-gateway
     restart: always
   aqua-db:
-    image: aquasec/database:2.5.2
+    image: aquasec/database:2.5.3
     ports:
       - "5432:5432"
     environment:
