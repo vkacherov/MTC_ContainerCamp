@@ -40,14 +40,42 @@ Login to the portal with the following credentials: administrator/workshop
 ![Aqua Portal](images/portal_scan.png)
 #### Part 3: Integrate risk assessment into builds
 1.  Review the script `build-mysql.sh`
-2.	Build lab/mysql:1.0 (using script)
+2.	Build lab/mysql:1.0 image
+
+```bash
+./build-mysql.sh
+```
+
+Once the script completes, verify the image has been created by running `docker images`
+
+![Build MySQL](images/build_mysql.png)
+
 3.	Explore results in JSON file and in the UI
 
 #### Part 4: Enforcement on a Docker host
 1.	Load the Aqua enforcement container using `agent-run.sh`
+
+```bash
+./agent-run.sh
+```
+
 2.	See the agent record in Aqua UI. Look at the images list.
-3.	In the Aqua UI, using Polcy -> Image Assurance, add a policy to Block Unregistered Images
-4.  Try to pull an image on the host. For example `docker run --rm -it redis:latest`
+
+![Portal mysql](images/portal_mysql.png)
+
+3.	In the Aqua UI, using Polcy -> Image Assurance, add a policy to Block Unregistered Images by clicking the plus button. Save your changes by cliking the "Save" button on the bottom of the page.
+
+![Portal policy](images/portal_policy.png)
+
+4.  Try to pull an unregistered image on the host, we will use Redis for this example.
+
+```bash
+docker run --rm -it redis:latest
+```
+
+If the policy to "Block Unregistered Images" has been enabled you should be prevented
+
+![Unreg Image Block](images/image_block.png)
 
 #### Part 5: Run an application with security controls
 1.	Run `get-images.sh`. It will fail until images are loaded and scanned
