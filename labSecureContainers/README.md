@@ -2,9 +2,33 @@
 In this lab we will experiment with securing containerized application by scanning for vulnerabilities, locking down the runtime environment and enforcing compliance.
 
 #### Part 1: Set up Aqua on a single host
+
+In this section we will set up the Aqua server on the jumpbox. Note: You will need a key (that will be handed out by the instructor) to complete the install:
 1.	Run `pull-aqua.sh <key>` to load the Aqua images into Docker
-2.	Run `docker-compose -f aqua-compose.yml up -d` to start Aqua containers
-3.	Log in to Aqua at `http://<your host>:80` with administrator/workshop
+
+```bash
+./pull-aqua.sh XXXXXXXX
+```
+
+2.	Run `docker-compose -f aqua-compose.yml up -d` to start Aqua containers. In order to access Docker Hub you will need to log into Docker. If you haven't done so already run
+```bash
+docker login
+```
+Now lets start the Aqua service
+```bash
+docker-compose -f aqua-compose.yml up -d
+```
+
+
+3.	Open a browser and navigate to `http://<your host>:80`
+
+Note: You will need to have port 80 open on the jumpbox VM. If you have trouble accessing the portal run the following command to open the port.
+```
+az vm open-port --name jumpbox -g jumpboxrg --port 80
+```
+Login to the portal with the following credentials: administrator/workshop
+
+![Aqua Portal](images/portal_initial.png)
 
 #### Part 2: Vulnerability and risk assessment
 1. From the Images menu, click Add Images to scan an image. Try the following:
@@ -13,6 +37,7 @@ In this lab we will experiment with securing containerized application by scanni
    -	node:latest
 2.	Review results
 
+![Aqua Portal](images/portal_scan.png)
 #### Part 3: Integrate risk assessment into builds
 1.  Review the script `build-mysql.sh`
 2.	Build lab/mysql:1.0 (using script)
