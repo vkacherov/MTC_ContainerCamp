@@ -57,7 +57,7 @@ Login to the portal with the following credentials: administrator/workshop
 #### Part 6: Secrets Management
 1.	Define a secret in Aqua called mysql.password
 2.	Run `docker-compose -f read-compose.yml up -d mysql`
-3.	After the container starts, run `docker-exec -it read_mysql mysql -p`
+3.	After the container starts, run `docker-exec -it read-mysql mysql -p`
 4.	Type the secret password and then use \q to exit
 5.	Run `docker-compose -f read-compose.yml up -d`
 6.	Run `docker inspect read-web`
