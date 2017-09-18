@@ -1,7 +1,7 @@
 # Secure Containers 
 In this lab we will experiment with securing containerized application by scanning for vulnerabilities, locking down the runtime environment and enforcing compliance.
 
-#### Part 1: Set up Aqua on a single host
+## Part 1: Set up Aqua on a single host
 
 In this section we will set up the Aqua server on the jumpbox. Note: You will need a key (that will be handed out by the instructor) to complete the install:
 1.	Run `pull-aqua.sh <key>` to load the Aqua images into Docker
@@ -30,7 +30,7 @@ Login to the portal with the following credentials: administrator/workshop
 
 ![Aqua Portal](images/portal_initial.png)
 
-#### Part 2: Vulnerability and risk assessment
+## Part 2: Vulnerability and risk assessment
 1. From the Images menu, click Add Images to scan an image. Try the following:
    -	debian:jessie
    -	buildpack-deps:jessie
@@ -38,7 +38,7 @@ Login to the portal with the following credentials: administrator/workshop
 2.	Review results
 
 ![Aqua Portal](images/portal_scan.png)
-#### Part 3: Integrate risk assessment into builds
+## Part 3: Integrate risk assessment into builds
 1.  Review the script `build-mysql.sh`
 2.	Build lab/mysql:1.0 image
 
@@ -52,7 +52,7 @@ Once the script completes, verify the image has been created by running `docker 
 
 3.	Explore results in JSON file and in the UI
 
-#### Part 4: Enforcement on a Docker host
+## Part 4: Enforcement on a Docker host
 1.	Load the Aqua enforcement container using `agent-run.sh`
 
 ```bash
@@ -73,16 +73,24 @@ Once the script completes, verify the image has been created by running `docker 
 docker run --rm -it redis:latest
 ```
 
-If the policy to "Block Unregistered Images" has been enabled you should be prevented
+If the policy to "Block Unregistered Images" has been enabled you should be prevented to pull or run the image:
 
 ![Unreg Image Block](images/image_block.png)
 
-#### Part 5: Run an application with security controls
-1.	Run `get-images.sh`. It will fail until images are loaded and scanned
-2.	In the meantime, review `read-compose.yml` and look for the database root password
-4.  Run `get-images.sh` to pull the images after they are registered
+## Part 5: Run an application with security controls
+1.	Run `load-images.sh`. It will fail until images are loaded and scanned (you can see the progress in the portal)
 
-#### Part 6: Secrets Management
+![Load Image Fail](images/load_images_fail.png)
+
+2.	In the meantime, review `read-compose.yml` and look for the database root password
+
+![Compose DB Pass](images/compose_db_pass.png)
+
+4.  Run `load-images.sh` to pull the images after they are registered
+
+![Load Image Fail](images/load_images_success.png)
+
+## Part 6: Secrets Management
 1.	Define a secret in Aqua called mysql.password
 2.	Run `docker-compose -f read-compose.yml up -d mysql`
 3.	After the container starts, run `docker-exec -it read-mysql mysql -p`
