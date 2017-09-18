@@ -92,10 +92,28 @@ If the policy to "Block Unregistered Images" has been enabled you should be prev
 
 ## Part 6: Secrets Management
 1.	Define a secret in Aqua called mysql.password
-2.	Run `docker-compose -f read-compose.yml up -d mysql`
-3.	After the container starts, run `docker-exec -it read-mysql mysql -p`
+
+![Portal Secret](images/portal_secret.png)
+
+2.	Run `docker-compose -f read-compose.yml up -d mysql` and verify that it started
+
+![mysql start](images/mysql_start.png)
+
+3.	After the container starts try connecting to the MySQL database
+
+```bash
+docker exec -it read-mysql mysql -p
+```
+
 4.	Type the secret password and then use \q to exit
+
+![MySQL connect](images/mysql_connect.png)
+
 5.	Run `docker-compose -f read-compose.yml up -d`
+
+![Read API Start](images/read_start.png)
+
 6.	Run `docker inspect read-web`
 
+![Read API Inspect](images/read_inspect.png)
 
