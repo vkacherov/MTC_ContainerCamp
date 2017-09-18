@@ -2,7 +2,7 @@
 In this lab we will experiment with securing containerized application by scanning for vulnerabilities, locking down the runtime environment and enforcing compliance.
 
 #### Part 1: Set up Aqua on a single host
-1.	Run `pull-images.sh <key>` to load the Aqua images into Docker
+1.	Run `pull-aqua.sh <key>` to load the Aqua images into Docker
 2.	Run `docker-compose -f aqua-compose.yml up -d` to start Aqua containers
 3.	Log in to Aqua at `http://<your host>:80` with administrator/workshop
 
