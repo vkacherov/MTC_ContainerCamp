@@ -29,7 +29,7 @@ services:
       - SCALOCK_AUDIT_DBNAME=slk_audit
       - SCALOCK_AUDIT_DBHOST=aqua-db
       - SCALOCK_AUDIT_DBPORT=5432
-      - LICENSE_TOKEN=PjPvg9N38ydpKPSt1bOh5O8pMqCCn8rE9Nd_HuBU4W_R0eVTTQ7XuneAzQSBDRDejDHgWRs2zKF7gpmdqaEXRdZM0Penrtz5fewpK0GDNrFvgcXKH33TCv69mUOYPnlnkwyTpZlXk-7UI_iZTEpS-N3GPUV0SlgCz9Va6t80Q8yVBjTT1ijZkQPTyon01jnA5XicwcgMTW_BF3M7RfcXKJWSkbSNp58gcYBsja0uiYiRJzR43bx9ABmmWvSnO0DEzKCKHIi6NNFSufhjXbL5hFWIXDcAv9tLM77H4Md8SBUZi0Bb1jcd63Po0RUJvEyikKTRubNBmJNYP8DJFIJ4fTIlUly3BZVe9_WH7uE7Wwi6eI0pPe0MfyezV08UotHkwv-8bbRxbwR3TtmrYejnq_eC6h-MHvVkIvLuxpaK0zyq
+      - LICENSE_TOKEN=
       #- AUTHORIZATION_HEADER=HEADER
       # - SCALOCK_AUDIT_DBSSL=require
       ### Modify below line to change the cyber center server address to a local instance
